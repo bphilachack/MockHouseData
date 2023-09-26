@@ -1,0 +1,32 @@
+Hey buddy, help me create a simple java springboot microservice that implements the following APIs.
+I want the app to use a inmemory database that is populated with fake mock data for the endpoints for testing.
+The app allows you to query for home rebuilds events.
+
+API endpoints:
+
+- History of the House. Knowing that the house was built. This api enriches the rebuild_status api.
+METHOD: GET 
+PATH: /homes/${HOME_ID}/inventory
+RESPONSE:
+{
+	homeId : String,
+	location: String,
+	insuranceCompanyName: String,
+	family: String
+}
+
+- Give you information on a rebuild that has happened
+METHOD: GET
+PATH: /homes/${HOME_ID}/rebuild_status/
+RESPONSE:
+[ {
+	isCritical: boolean,
+	homeId : String,
+	success: boolean,
+	startTimestamp: String, // ISO-8601 format
+	endTimestamp: String, // ISO-8601 format
+}]
+
+Ask me questions if you're unsure of anything.
+
+Please rewrite this as feature requirements so that multiple developers can work on this independently, so the features can be built one at a time concurrently if possible.
