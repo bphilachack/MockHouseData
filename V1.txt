@@ -1,0 +1,81 @@
+**Feature 1: Retrieve Home Inventory**
+
+*Description*: Create an API endpoint that allows users to retrieve the history and details of a house, including its location, insurance company name, and family residing in it.
+
+*API Endpoint*:
+- Method: GET
+- Path: `/homes/{HOME_ID}/inventory`
+
+*Response*:
+```json
+{
+    "homeId": "String",
+    "location": "String",
+    "insuranceCompanyName": "String",
+    "family": "String"
+}
+```
+
+*Steps for Setting Up the Java Spring Boot Application*:
+
+1. **Project Initialization**:
+   - Create a new Spring Boot project using Spring Initializer or your preferred IDE.
+   - Add the necessary dependencies, including Spring Web and any database-related dependencies if required.
+
+2. **Define Entity Class**:
+   - Create an entity class (e.g., `Home`) to represent the home inventory data.
+   - Include fields for `homeId`, `location`, `insuranceCompanyName`, and `family`.
+
+3. **Create a Controller**:
+   - Develop a controller class (e.g., `HomeController`) to handle the API request.
+   - Implement a method to handle the GET request for `/homes/{HOME_ID}/inventory`.
+   - Retrieve home inventory data based on the provided `HOME_ID` and return it as a JSON response.
+
+4. **Data Mocking**:
+   - For the initial setup, you can mock the data directly within the controller method.
+   - Later, replace the data mocking with actual data retrieval logic, such as database queries.
+
+**Feature 2: Retrieve Rebuild Status**
+
+*Description*: Create an API endpoint that allows users to obtain information on rebuild events that have occurred for a specific home.
+
+*API Endpoint*:
+- Method: GET
+- Path: `/homes/{HOME_ID}/rebuild_status/`
+
+*Response*:
+```json
+[
+    {
+        "isCritical": true,
+        "homeId": "String",
+        "success": true,
+        "startTimestamp": "String (ISO-8601 format)",
+        "endTimestamp": "String (ISO-8601 format)"
+    }
+]
+```
+
+*Steps for Setting Up the Java Spring Boot Application*:
+
+1. **Controller Modification**:
+   - Extend the existing `HomeController` or create a new controller (e.g., `RebuildStatusController`) for this feature.
+   - Implement a method to handle the GET request for `/homes/{HOME_ID}/rebuild_status/`.
+   - Retrieve rebuild status data based on the provided `HOME_ID` and return it as a JSON response.
+
+2. **Data Mocking**:
+   - Initially, mock the rebuild status data within the controller method.
+   - Later, replace the data mocking with actual data retrieval logic, considering appropriate data storage (e.g., database).
+
+3. **Error Handling and Validation**:
+   - Implement error handling and validation to handle cases such as invalid `HOME_ID` or data not found gracefully.
+
+4. **Pagination (Optional)**:
+   - If a large number of rebuild events are expected, consider adding pagination to the API response.
+
+**Additional Notes**:
+- Configure your Spring Boot application to connect to a database for storing and retrieving home and rebuild data.
+- Use Spring Data JPA or other data access frameworks to interact with the database.
+- Collaborate with stakeholders to refine API specifications as needed during development.
+- Properly document the APIs, including request parameters and response structures.
+- Implement security measures as necessary, such as authentication and authorization, depending on application requirements.
